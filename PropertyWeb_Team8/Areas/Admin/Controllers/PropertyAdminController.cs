@@ -9,7 +9,7 @@ namespace PropertyWeb_Team8.Areas.Admin.Controllers
 {
     public class PropertyAdminController : Controller
     {
-        PropertyWebEntities model = new PropertyWebEntities();
+        PropertyWeb_Team8Entities model = new PropertyWeb_Team8Entities();
         // GET: Admin/PropertyAdmin
         public ActionResult Index()
         {

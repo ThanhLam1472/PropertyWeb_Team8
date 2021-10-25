@@ -13,10 +13,10 @@ namespace PropertyWeb_Team8.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PropertyWebEntities : DbContext
+    public partial class PropertyWeb_Team8Entities : DbContext
     {
-        public PropertyWebEntities()
-            : base("name=PropertyWebEntities")
+        public PropertyWeb_Team8Entities()
+            : base("name=PropertyWeb_Team8Entities")
         {
         }
     
@@ -35,6 +35,5 @@ namespace PropertyWeb_Team8.Models
         public virtual DbSet<Property_Status> Property_Status { get; set; }
         public virtual DbSet<Property_Type> Property_Type { get; set; }
         public virtual DbSet<Service> Services { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

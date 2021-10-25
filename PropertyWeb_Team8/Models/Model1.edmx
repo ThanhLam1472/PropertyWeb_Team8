@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PropertyWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PropertyWeb_Team8Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="ID" />
@@ -121,16 +121,6 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Service_Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <Association Name="FK_District_City">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="District" Type="Self.District" Multiplicity="*" />
@@ -227,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PropertyWebModelStoreContainer">
+        <EntityContainer Name="PropertyWeb_Team8ModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
@@ -238,7 +228,6 @@
           <EntitySet Name="Property_Status" EntityType="Self.Property_Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Property_Type" EntityType="Self.Property_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_District_City" Association="Self.FK_District_City">
             <End Role="City" EntitySet="City" />
             <End Role="District" EntitySet="District" />
@@ -276,7 +265,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PropertyWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PropertyWeb_Team8Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="ID" />
@@ -409,16 +398,6 @@
           <Property Name="Service_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Property_Service" Relationship="Self.FK_Property_Service_Service" FromRole="Service" ToRole="Property_Service" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <Association Name="FK_District_City">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="District" Type="Self.District" Multiplicity="*" />
@@ -515,7 +494,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PropertyWebEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PropertyWeb_Team8Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Cities" EntityType="Self.City" />
           <EntitySet Name="Districts" EntityType="Self.District" />
@@ -526,7 +505,6 @@
           <EntitySet Name="Property_Status" EntityType="Self.Property_Status" />
           <EntitySet Name="Property_Type" EntityType="Self.Property_Type" />
           <EntitySet Name="Services" EntityType="Self.Service" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_District_City" Association="Self.FK_District_City">
             <End Role="City" EntitySet="Cities" />
             <End Role="District" EntitySet="Districts" />
@@ -565,9 +543,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PropertyWebModelStoreContainer" CdmEntityContainer="PropertyWebEntities">
+        <EntityContainerMapping StorageEntityContainer="PropertyWeb_Team8ModelStoreContainer" CdmEntityContainer="PropertyWeb_Team8Entities">
           <EntitySetMapping Name="Accounts">
-            <EntityTypeMapping TypeName="PropertyWebModel.Account">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.Account">
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -579,7 +557,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cities">
-            <EntityTypeMapping TypeName="PropertyWebModel.City">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="City_Name" ColumnName="City_Name" />
@@ -587,7 +565,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Districts">
-            <EntityTypeMapping TypeName="PropertyWebModel.District">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.District">
               <MappingFragment StoreEntitySet="District">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="City_ID" ColumnName="City_ID" />
@@ -596,7 +574,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Full_Contract">
-            <EntityTypeMapping TypeName="PropertyWebModel.Full_Contract">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.Full_Contract">
               <MappingFragment StoreEntitySet="Full_Contract">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Full_Contract_Code" ColumnName="Full_Contract_Code" />
@@ -615,7 +593,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Installment_Contract">
-            <EntityTypeMapping TypeName="PropertyWebModel.Installment_Contract">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.Installment_Contract">
               <MappingFragment StoreEntitySet="Installment_Contract">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Installment_Contract_Code" ColumnName="Installment_Contract_Code" />
@@ -638,7 +616,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Properties">
-            <EntityTypeMapping TypeName="PropertyWebModel.Property">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.Property">
               <MappingFragment StoreEntitySet="Property">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Property_Code" ColumnName="Property_Code" />
@@ -659,7 +637,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Property_Service">
-            <EntityTypeMapping TypeName="PropertyWebModel.Property_Service">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.Property_Service">
               <MappingFragment StoreEntitySet="Property_Service">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
@@ -668,7 +646,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Property_Status">
-            <EntityTypeMapping TypeName="PropertyWebModel.Property_Status">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.Property_Status">
               <MappingFragment StoreEntitySet="Property_Status">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Property_Status_Name" ColumnName="Property_Status_Name" />
@@ -676,7 +654,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Property_Type">
-            <EntityTypeMapping TypeName="PropertyWebModel.Property_Type">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.Property_Type">
               <MappingFragment StoreEntitySet="Property_Type">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Property_Type_Name" ColumnName="Property_Type_Name" />
@@ -685,21 +663,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Services">
-            <EntityTypeMapping TypeName="PropertyWebModel.Service">
+            <EntityTypeMapping TypeName="PropertyWeb_Team8Model.Service">
               <MappingFragment StoreEntitySet="Service">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Service_Name" ColumnName="Service_Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="PropertyWebModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
